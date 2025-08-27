@@ -1,95 +1,63 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
+    <div className="grid grid-rows-[20px_1fr_20px] min-h-svh p-8 gap-16 place-items-center font-sans">
+      <main className="flex flex-col gap-8 row-start-2">
         <Image
-          className={styles.logo}
+          className="dark:invert"
           src="/next.svg"
           alt="Next.js logo"
           width={180}
           height={38}
           priority
         />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <h1 className="text-center mb-8 text-3xl sm:text-4xl font-semibold">
+          Descope Authentication Flows Demo
+        </h1>
+
+        <p className="text-center mb-8 text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
+          Explore different authentication methods and see how Descope flows
+          work in action.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          <Link
+            className="inline-flex items-center justify-center h-12 px-5 rounded-full text-base font-medium bg-gray-900 text-white hover:bg-gray-700 transition-colors"
+            href="/auth"
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
+            🔐 Try Authentication Flows
+          </Link>
+          <Link
+            href="/protected"
+            className="inline-flex items-center justify-center h-12 px-5 rounded-full text-base font-medium border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors min-w-[158px]"
           >
-            Read our docs
-          </a>
+            🛡️ Protected Page
+          </Link>
+        </div>
+
+        <div className="mt-8 text-center">
+          <h3 className="text-xl font-semibold">
+            Available Authentication Methods:
+          </h3>
+          <ul className="text-left inline-block my-4 space-y-1">
+            <li>Step Up</li>
+            <li>Sign Up / Sign In</li>
+            <li>Sign In</li>
+            <li>Sign Up</li>
+            <li>nOTP (WhatsApp)</li>
+            <li>OTP (SMS)</li>
+            <li>TOTP (Authenticator)</li>
+
+            <li>Magic Link</li>
+            <li>Social Login</li>
+            <li>SSO</li>
+            <li>Passkeys</li>
+          </ul>
         </div>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { AuthProvider } from "@descope/nextjs-sdk";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,8 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} bg-white text-gray-900 dark:bg-neutral-950 dark:text-neutral-100 antialiased`}
+      >
+        <AuthProvider projectId={process.env.NEXT_PUBLIC_DESCOPE_PROJECT_ID!}>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
