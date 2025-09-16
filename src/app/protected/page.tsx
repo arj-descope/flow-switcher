@@ -1,14 +1,21 @@
 "use client";
 
-import { useSession, useUser } from "@descope/nextjs-sdk/client";
-import { useEffect } from "react";
+import { useDescope, useSession, useUser } from "@descope/nextjs-sdk/client";
+import { useCallback, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function ProtectedPage() {
   const { isAuthenticated, isSessionLoading } = useSession();
   const { user, isUserLoading } = useUser();
+  const { logout } = useDescope();
+
   const router = useRouter();
+
+  const handleLogout = useCallback(async () => {
+    await logout();
+    window.open("/", "_self");
+  }, [logout]);
 
   useEffect(() => {
     if (!isSessionLoading && !isAuthenticated) {
@@ -57,12 +64,12 @@ export default function ProtectedPage() {
         </div>
 
         <div className="flex gap-4 justify-center">
-          <Link
-            href="/"
+          <button
+            onClick={handleLogout}
             className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-base"
           >
-            ← Home
-          </Link>
+            ← Logout & Go Home
+          </button>
           <Link
             href="/auth"
             className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-md text-base"
