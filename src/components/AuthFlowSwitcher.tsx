@@ -50,11 +50,11 @@ const AuthFlowSwitcher = () => {
       <div className="border border-gray-200 dark:border-neutral-700 rounded-lg p-5 bg-gray-50 dark:bg-neutral-800/50">
         <Descope
           flowId={flowId}
-          onSuccess={(e: any) => {
+          onSuccess={(e: unknown) => {
             console.log("Authentication successful:", e);
             router.push("/protected");
           }}
-          onError={(e: any) => {
+          onError={(e: unknown) => {
             console.log("Authentication error:", e);
           }}
         />
