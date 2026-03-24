@@ -24,14 +24,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-white text-gray-900 dark:bg-neutral-950 dark:text-neutral-100 antialiased`}
-      >
-        <AuthProvider projectId={process.env.NEXT_PUBLIC_DESCOPE_PROJECT_ID!}>
+    <AuthProvider projectId={process.env.NEXT_PUBLIC_DESCOPE_PROJECT_ID!}>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} bg-white text-gray-900 dark:bg-neutral-950 dark:text-neutral-100 antialiased`}
+        >
           {children}
-        </AuthProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </AuthProvider>
   );
 }
